@@ -1,10 +1,14 @@
-import { Button } from '@/components/ui/button'
+import { TopBar, Container, Title } from '@/components/shared'
 
 export default function Home() {
   return (
-    <h1>
-      Главная
-      <Button></Button>
-    </h1>
+    <>
+      <Container className="mt-10">
+        <Title text="Все пиццы" size="lg" className="font-extrabold" />
+      </Container>
+
+      <TopBar />
+      <div style={{height: '2000px'}}></div>
+    </>
   )
 }
