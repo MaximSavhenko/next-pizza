@@ -1,6 +1,13 @@
-import { TopBar, Container, Title, Filters, ProductCard } from '@/components/shared'
+import {
+  TopBar,
+  Container,
+  Title,
+  Filters,
+  ProductsGroupList,
+} from '@/components/shared'
 
 export default function Home() {
+
   return (
     <>
       <Container className="mt-10">
@@ -10,13 +17,120 @@ export default function Home() {
       <TopBar />
 
       <Container className="mt-10 pb-14">
-        <div className="flex gap-[60px]">
+        <div className="flex gap-[80px]">
           <div className="w-[250px]">
-            <Filters/>
+            <Filters />
           </div>
           <div className="flex-1">
             <div className="flex flex-col gap-16">
-              <ProductCard id={0} name={'Сырный цыпленок'} price={200} imageUrl={'https://adminbm.kharkiv.ua/uploads/DSC_09546_3fcd539887.webp'} />
+              <ProductsGroupList
+                title={'Пиццы'}
+                items={[
+                  {
+                    id: 1324,
+                    name: 'Сырный цыпленок',
+                    imageUrl:
+                      'https://adminbm.kharkiv.ua/uploads/DSC_09546_3fcd539887.webp',
+                    price: 250,
+                    items: [{ price: 250 }],
+                  },
+                  {
+                    id: 2,
+                    name: 'Сырный цыпленок',
+                    imageUrl:
+                      'https://adminbm.kharkiv.ua/uploads/DSC_09546_3fcd539887.webp',
+                    price: 250,
+                    items: [{ price: 250 }],
+                  },
+                  {
+                    id: 3,
+                    name: 'Сырный цыпленок',
+                    imageUrl:
+                      'https://adminbm.kharkiv.ua/uploads/DSC_09546_3fcd539887.webp',
+                    price: 250,
+                    items: [{ price: 250 }],
+                  },
+                  {
+                    id: 4,
+                    name: 'Сырный цыпленок',
+                    imageUrl:
+                      'https://adminbm.kharkiv.ua/uploads/DSC_09546_3fcd539887.webp',
+                    price: 250,
+                    items: [{ price: 250 }],
+                  },
+                  {
+                    id: 5,
+                    name: 'Сырный цыпленок',
+                    imageUrl:
+                      'https://adminbm.kharkiv.ua/uploads/DSC_09546_3fcd539887.webp',
+                    price: 250,
+                    items: [{ price: 250 }],
+                  },
+                  {
+                    id: 6,
+                    name: 'Сырный цыпленок',
+                    imageUrl:
+                      'https://adminbm.kharkiv.ua/uploads/DSC_09546_3fcd539887.webp',
+                    price: 250,
+                    items: [{ price: 250 }],
+                  },
+                ]}
+                categoryId={1}
+              />
+              <ProductsGroupList
+                title={'Комбо'}
+                items={[
+                  {
+                    id: 1324,
+                    name: 'Сырный цыпленок',
+                    imageUrl:
+                      'https://adminbm.kharkiv.ua/uploads/DSC_09546_3fcd539887.webp',
+                    price: 250,
+                    items: [{ price: 250 }],
+                  },
+                  {
+                    id: 2,
+                    name: 'Сырный цыпленок',
+                    imageUrl:
+                      'https://adminbm.kharkiv.ua/uploads/DSC_09546_3fcd539887.webp',
+                    price: 250,
+                    items: [{ price: 250 }],
+                  },
+                  {
+                    id: 3,
+                    name: 'Сырный цыпленок',
+                    imageUrl:
+                      'https://adminbm.kharkiv.ua/uploads/DSC_09546_3fcd539887.webp',
+                    price: 250,
+                    items: [{ price: 250 }],
+                  },
+                  {
+                    id: 4,
+                    name: 'Сырный цыпленок',
+                    imageUrl:
+                      'https://adminbm.kharkiv.ua/uploads/DSC_09546_3fcd539887.webp',
+                    price: 250,
+                    items: [{ price: 250 }],
+                  },
+                  {
+                    id: 5,
+                    name: 'Сырный цыпленок',
+                    imageUrl:
+                      'https://adminbm.kharkiv.ua/uploads/DSC_09546_3fcd539887.webp',
+                    price: 250,
+                    items: [{ price: 250 }],
+                  },
+                  {
+                    id: 6,
+                    name: 'Сырный цыпленок',
+                    imageUrl:
+                      'https://adminbm.kharkiv.ua/uploads/DSC_09546_3fcd539887.webp',
+                    price: 250,
+                    items: [{ price: 250 }],
+                  },
+                ]}
+                categoryId={2}
+              />
             </div>
           </div>
         </div>
