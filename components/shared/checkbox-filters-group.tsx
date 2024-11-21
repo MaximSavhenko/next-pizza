@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { FilterChecboxProps, FilterCheckbox } from './filter-checkbox'
-import { Input } from '../ui'
+import { Input, Skeleton } from '../ui'
 
 type Item = FilterChecboxProps
 
@@ -11,10 +11,13 @@ interface Props {
   items: Item[]
   defaultItems?: Item[]
   limit?: number
+  loading?: boolean
   searchInputPlaceholder?: string
-  onChange?: (values: string[]) => void
+  onClickCheckbox?: (id: string) => void
+  selectedIds?: Set<string>
   defaultValue?: string[]
   className?: string
+  name?: string
 }
 
 export const CheckboxFiltersGroup: React.FC<Props> = ({
@@ -23,12 +26,30 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
   defaultItems,
   limit = 5,
   searchInputPlaceholder = 'Поиск...',
-  onChange,
+  loading,
+  onClickCheckbox,
+  selectedIds,
   defaultValue,
   className,
+  name
 }) => {
   const [showAll, setShowAll] = React.useState(false)
   const [searchValue, setSearchValue] = React.useState('')
+
+  if (loading) {
+    return (
+      <div className="">
+        <p className="font-bold mb-3">{title}</p>
+        {...Array(limit)
+          .fill(0)
+          .map((_, i) => (
+            <Skeleton key={i} className="mb-4 h-6 rounded-[8px]" />
+          ))}
+        <Skeleton className=" w-28 mb-4 h-6 rounded-[8px]" />
+      </div>
+    )
+  }
+
   const list = showAll
     ? items.filter((item) =>
         item.text.toLowerCase().includes(searchValue.toLocaleLowerCase())
@@ -54,12 +75,13 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
       <div className="flex flex-col gap-4 max-h-96 pr-2 overflow-auto scrollbar">
         {list.map((item, index) => (
           <FilterCheckbox
-            onCheckedChange={(ids) => console.log(ids)}
-            checked={false}
+            onCheckedChange={() => onClickCheckbox?.(item.value)}
+            checked={selectedIds?.has(item.value)}
             key={index}
             text={item.text}
             value={item.value}
             endAdornment={item.endAdornment}
+            name={name}
           />
         ))}
       </div>
