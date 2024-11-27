@@ -1,5 +1,3 @@
-'use client'
-
 import {
   Container,
   GroupVariants,
@@ -14,8 +12,6 @@ export default async function ProductPage({
 }: {
   params: { id: string }
 }) {
-  
-
   const product = await prisma.product.findFirst({ where: { id: Number(id) } })
 
   if (!product) {
@@ -40,7 +36,7 @@ export default async function ProductPage({
             dicta sit nemo rem dolorem!
           </p>
           <GroupVariants
-          selectedValue='2'
+            selectedValue="2"
             items={[
               {
                 name: 'Маленькая',
