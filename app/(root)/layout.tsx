@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import '../globals.css'
-import { Header } from '@/components/shared'
+import { Header } from '@/shared/components/shared'
 
 export const metadata: Metadata = {
   title: 'Next Pizza | Главная',
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function HomeLayout({
   children,
-  modal
+  modal,
 }: Readonly<{
   children: React.ReactNode
   modal: React.ReactNode
