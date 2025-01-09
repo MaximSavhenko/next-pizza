@@ -1,5 +1,6 @@
 import { Nunito } from 'next/font/google'
 import './globals.css'
+import { Toaster } from 'react-hot-toast'
 
 const nunito = Nunito({
   subsets: ['cyrillic'],
@@ -13,11 +14,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" >
+    <html lang="en">
       <head>
         <link data-rh="true" rel="icon" href="/logo.png" />
       </head>
-      <body className={`${nunito.variable} antialiased`}>{children}</body>
+      <body className={`${nunito.variable} antialiased`}>
+        {children}
+        <Toaster />
+      </body>
     </html>
   )
 }

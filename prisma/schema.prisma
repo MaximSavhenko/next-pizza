@@ -19,7 +19,7 @@ model User {
     email    String   @unique
     password String   
     role     UserRole @default(USER)
-    verified DateTime
+    verified DateTime?
 
     provider   String?
     providerId String?
@@ -107,7 +107,7 @@ model CartItem {
     productItem   ProductItem @relation(fields: [productItemId], references: [id])
     productItemId Int
 
-    quantity Int
+    quantity Int @default(1)
 
     ingredients Ingredient[]
 
