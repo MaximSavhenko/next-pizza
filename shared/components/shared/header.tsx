@@ -24,7 +24,7 @@ export const Header: React.FC<Props> = ({ className }) => {
             <div>
               <h1 className="text-2xl uppercase font-black">Next Pizza</h1>
               <p className="text-sm text-gray-400 leading-3">
-                вкусней уже некуда
+                I need your clothes, your boots, and your motorcycle
               </p>
             </div>
           </div>
@@ -40,7 +40,7 @@ export const Header: React.FC<Props> = ({ className }) => {
             <User size={16} />
             Войти
           </Button>
-          <CartButton/>
+          <CartButton />
         </div>
       </Container>
     </header>
