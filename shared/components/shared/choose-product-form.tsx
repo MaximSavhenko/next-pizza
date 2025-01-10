@@ -21,7 +21,7 @@ export const ChooseProductForm: React.FC<Props> = ({
   loading,
 }) => {
   return (
-    <div className={cn(className, 'flex flex-1')}>
+    <div className={cn(className, 'flex flex-1 justify-between')}>
       <div className="flex flex-1 items-center justify-center relative w-full">
         <img
           src={imageUrl}
@@ -30,7 +30,7 @@ export const ChooseProductForm: React.FC<Props> = ({
         />
       </div>
 
-      <div className="w-[490px] bg-[#FFF7EE] p-7">
+      <div className="w-[490px] bg-[#FFF7EE] p-7 flex flex-1 flex-col justify-between">
         <Title text={name} size="md" className="font-extrabold mb-1" />
         <Button
           loading={loading}
