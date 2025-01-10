@@ -63,12 +63,22 @@ export async function POST(req: NextRequest) {
       where: {
         cartId: userCart.id,
         productItemId: data.productItemId,
-        ingredients: { every: { id: { in: data.ingredients } } },
+      },
+      include: {
+        ingredients: true,
       },
     })
 
+    // Проверяем совпадение ингредиентов как точные множества
+    const ingredientsMatch =
+      findCartItem &&
+      findCartItem.ingredients.length === data.ingredients?.length &&
+      findCartItem.ingredients.every((ingredient) =>
+        data.ingredients?.includes(ingredient.id)
+      )
+
     // если товар был найден(в корзине пользователя), делаем + 1
-    if (findCartItem) {
+    if (ingredientsMatch) {
       await prisma.cartItem.update({
         where: {
           id: findCartItem.id,
