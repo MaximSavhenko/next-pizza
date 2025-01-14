@@ -22,8 +22,8 @@ export const IngredientItem: React.FC<Props> = ({
   return (
     <div
       className={cn(
-        'flex items-center flex-col p-1 rounded-md w-32 text-center relative cursor-pointer shadow-md bg-white',
-        { 'border border-primary': active },
+        'flex items-center flex-col p-1 rounded-md w-32 text-center relative cursor-pointer shadow-md bg-white transition-all duration-300',
+        { 'outline outline-1 outline-primary': active },
         className
       )}
       onClick={onClick}
