@@ -54,7 +54,7 @@ export async function createOrder(data: CheckoutFormValues) {
         comment: data.comment,
         totalAmount: userCart.totalAmount,
         status: OrderStatus.PENDING,
-        items: JSON.stringify(userCart.items),
+        items: userCart.items
       },
     })
 
@@ -82,9 +82,7 @@ export async function createOrder(data: CheckoutFormValues) {
       orderId: order.id,
     })
 
-    if (!paymentData) {
-      throw new Error('Payment data not found')
-    }
+    const paymentUrl = paymentData.checkoutUrl
 
     await sendEmail(
       data.email,
@@ -92,11 +90,11 @@ export async function createOrder(data: CheckoutFormValues) {
       PayOrderTemplate({
         orderId: order.id,
         totalAmount: order.totalAmount,
-        paymentUrl: paymentData.checkoutUrl,
+        paymentUrl,
       })
     )
 
-    return paymentData.checkoutUrl
+    return paymentUrl
   } catch (error) {
     console.error('[CreateOrder] Server error ', error)
   }
