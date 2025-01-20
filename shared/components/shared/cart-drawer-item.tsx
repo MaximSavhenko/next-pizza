@@ -20,9 +20,7 @@ export const CartDrawerItem: React.FC<Props> = ({
   onClickCountButton,
   onClickRemoveItem,
   className,
-}) => {
-  console.log(disabled);
-  
+}) => {  
   return (
     <div
       className={cn(

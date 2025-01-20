@@ -12,9 +12,11 @@ import {
   CheckoutAddressForm,
   CheckoutCart,
 } from '@/shared/components'
-import { cn } from '@/shared/lib/utils'
+import { createOrder } from '@/app/actions'
+import toast from 'react-hot-toast'
 
 export default function Checkout() {
+  const [submitting, setSubmitting] = React.useState(false)
   const { totalAmount, items, updateItemQuantity, removeCartItem, loading } =
     useCart()
 
@@ -31,7 +33,22 @@ export default function Checkout() {
   })
 
   const onSubmit = async (data: CheckoutFormValues) => {
-    console.log(data)
+    try {
+      const url = await createOrder(data)
+      setSubmitting(true)
+      toast.success('Заказ успешно оформлен! Переход на оплату...', {
+        icon: '✅',
+      })
+      if (url) {
+        location.href = url
+      }
+    } catch (error) {
+      console.error(error)
+      setSubmitting(false)
+      toast.error('Не удалось создать заказ', {
+        icon: '❌',
+      })
+    }
   }
 
   const onClickCountButton = (
@@ -69,7 +86,7 @@ export default function Checkout() {
             </div>
 
             <div className="w-[450px]">
-              <CheckoutSidebar totalAmount={totalAmount} loading={loading} />
+              <CheckoutSidebar totalAmount={totalAmount} loading={loading || submitting} />
             </div>
           </div>
         </form>
