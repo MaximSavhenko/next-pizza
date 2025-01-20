@@ -8,6 +8,7 @@ import { cn } from '@/shared/lib/utils'
 interface Props {
   totalAmount: number
   loading?: boolean
+  submitting?: boolean
   className?: string
 }
 const VAT = 15
@@ -81,6 +82,7 @@ export const CheckoutSidebar: React.FC<Props> = ({
       <Button
         type="submit"
         className="w-full h-14 rounded-2xl mt-6 text-base font-bold"
+        loading={loading}
       >
         Перейти к оплате
         <ArrowRight className="w-5 ml-2" />
