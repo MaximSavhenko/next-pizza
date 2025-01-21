@@ -6,7 +6,7 @@ import { OrderStatus } from '@prisma/client'
 import { PaymentCallbackDatat } from '@/@types/liqpay'
 import { CartItemDTO } from '@/shared/services/dto/cart.dto'
 import { sendEmail } from '@/shared/lib'
-import { OrderSuccessTemplate } from '@/shared/components'
+import { OrderSuccessTemplate, OrderСanceledTemplate } from '@/shared/components'
 
 export async function POST(req: NextRequest) {
   try {
@@ -90,11 +90,11 @@ export async function POST(req: NextRequest) {
         OrderSuccessTemplate({ orderId: order.id, items: items })
       )
     } else {
-      // await sendEmail(
-      //   order.email,
-      //   'Next Pizza / Оплата заказа #' + order.id +'отменена ��',
-      //   'Оплата заказа не удалась. Возможно, у вас недостаточно средств.'
-      // )
+      await sendEmail(
+        order.email,
+        'Next Pizza / Оплата заказа #' + order.id +'отменена',
+        OrderСanceledTemplate({ orderId: order.id })
+      )
     }
 
     return new Response('OK', { status: 200 })

@@ -23,8 +23,7 @@ export async function generateLiqPayLink(details: Props) {
     order_id: details.orderId,
     version: 3,
     result_url: process.env.LIQPAY_CALLBACK_URL,
-    // server_url: process.env.LIQPAY_SERVER_URL,
-    server_url: 'https://0b0b-159-224-21-46.ngrok-free.app/api/liqpay-callback',
+    server_url: process.env.LIQPAY_SERVER_URL,
   }
 
   const dataString = JSON.stringify(params)
