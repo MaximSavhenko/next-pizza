@@ -145,7 +145,7 @@ model VerificationCode {
     user   User? @relation(fields: [userId], references: [id])
     userId Int   @unique
 
-    code String @unique
+    code String
 
     createdAt DateTime @default(now())
 
