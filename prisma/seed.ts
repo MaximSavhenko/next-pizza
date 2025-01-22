@@ -29,7 +29,7 @@ async function up() {
     data: [
       {
         fullName: 'User Test',
-        email: 'alice@example.com',
+        email: 'siiigggma@gmail.com',
         password: hashSync('1111111', 10),
         verified: new Date(),
         role: 'USER',
