@@ -7,11 +7,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { SearchInput } from './search-input'
 import { CartButton } from './cart-button'
-<<<<<<< HEAD
-import { useSearchParams } from 'next/navigation'
-=======
 import { useRouter, useSearchParams } from 'next/navigation'
->>>>>>> refs/remotes/origin/main
 import toast from 'react-hot-toast'
 import { ProfileButton } from './profile-button'
 import { AuthModal } from './modals/auth-modal'
@@ -27,24 +23,12 @@ export const Header: React.FC<Props> = ({
   hasSearch = true,
   hasCart = true,
 }) => {
-<<<<<<< HEAD
-=======
   const router = useRouter()
->>>>>>> refs/remotes/origin/main
   const [openAuthModal, setOpenAuthModal] = React.useState(false)
   const searchParams = useSearchParams()
 
   // Показываем уведомление об успешной оплате заказа
   React.useEffect(() => {
-<<<<<<< HEAD
-    setTimeout(() => {
-      if (searchParams.has('paid')) {
-        toast.success(
-          'Ваш заказ успешно оплачен! Информация отправлена на почту 🍕🎉'
-        )
-      }
-    }, 0)
-=======
     let tostMessage = ''
 
     if (searchParams.has('paid')) {
@@ -64,7 +48,6 @@ export const Header: React.FC<Props> = ({
         })
       }, 0)
     }
->>>>>>> refs/remotes/origin/main
   }, [])
 
   return (

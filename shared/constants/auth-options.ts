@@ -1,9 +1,6 @@
 import { AuthOptions } from 'next-auth'
 import GitHubProvider from 'next-auth/providers/github'
-<<<<<<< HEAD
-=======
 import GoogleProvider from 'next-auth/providers/google';
->>>>>>> refs/remotes/origin/main
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { prisma } from '@/prisma/prisma-client'
 import { compare, hashSync } from 'bcrypt'
@@ -12,13 +9,10 @@ import { signIn } from 'next-auth/react'
 
 export const authOptions: AuthOptions = {
   providers: [
-<<<<<<< HEAD
-=======
     GoogleProvider({
       clientId: process.env.GOOGLE_ID || '',
       clientSecret: process.env.GOOGLE_SECRET || '',
     }),
->>>>>>> refs/remotes/origin/main
     GitHubProvider({
       clientId: process.env.GITHUB_ID || '',
       clientSecret: process.env.GITHUB_SECRET || '',
@@ -163,7 +157,3 @@ export const authOptions: AuthOptions = {
     },
   },
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/origin/main

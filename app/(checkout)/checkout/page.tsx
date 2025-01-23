@@ -1,11 +1,4 @@
 'use client'
-<<<<<<< HEAD
-import { useForm, FormProvider } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useCart } from '@/shared/hooks'
-import React from 'react'
-import { checkoutFormSchema, CheckoutFormValues } from '@/shared/constants'
-=======
 import React from 'react'
 import toast from 'react-hot-toast'
 import { useForm, FormProvider } from 'react-hook-form'
@@ -14,7 +7,6 @@ import { useCart } from '@/shared/hooks'
 import { checkoutFormSchema, CheckoutFormValues } from '@/shared/constants'
 import { createOrder } from '@/app/actions'
 import { useSession } from 'next-auth/react'
->>>>>>> refs/remotes/origin/main
 import {
   CheckoutSidebar,
   Container,
@@ -23,17 +15,10 @@ import {
   CheckoutAddressForm,
   CheckoutCart,
 } from '@/shared/components'
-<<<<<<< HEAD
-import { createOrder } from '@/app/actions'
-import toast from 'react-hot-toast'
-
-export default function Checkout() {
-=======
 import { Api } from '@/shared/services/api-client'
 
 export default function Checkout() {
   const { data: session } = useSession()
->>>>>>> refs/remotes/origin/main
   const [submitting, setSubmitting] = React.useState(false)
   const { totalAmount, items, updateItemQuantity, removeCartItem, loading } =
     useCart()
@@ -50,8 +35,6 @@ export default function Checkout() {
     },
   })
 
-<<<<<<< HEAD
-=======
   React.useEffect(() => {
     async function fetchUserInfo() {
       const data = await Api.auth.getMe()
@@ -67,7 +50,6 @@ export default function Checkout() {
     }
   }, [session])
 
->>>>>>> refs/remotes/origin/main
   const onSubmit = async (data: CheckoutFormValues) => {
     try {
       const url = await createOrder(data)
@@ -122,14 +104,10 @@ export default function Checkout() {
             </div>
 
             <div className="w-[450px]">
-<<<<<<< HEAD
-              <CheckoutSidebar totalAmount={totalAmount} loading={loading || submitting} />
-=======
               <CheckoutSidebar
                 totalAmount={totalAmount}
                 loading={loading || submitting}
               />
->>>>>>> refs/remotes/origin/main
             </div>
           </div>
         </form>
