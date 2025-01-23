@@ -82,7 +82,11 @@ export const AuthModal: React.FC<Props> = ({ className, open, onClose }) => {
           type="button"
           className="h-12"
         >
+<<<<<<< HEAD
           {type === 'login' ? 'Вход' : 'Регистрация'}
+=======
+          {type === 'login' ? 'Регистрация' : ' Вход'}
+>>>>>>> refs/remotes/origin/main
         </Button>
       </DialogContent>
     </Dialog>
