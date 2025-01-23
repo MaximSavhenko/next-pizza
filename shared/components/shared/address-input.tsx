@@ -4,6 +4,7 @@ import { useAddressSearch } from '@/shared/hooks'
 import React, { useEffect, useRef } from 'react'
 import { Input } from '../ui'
 import { cn } from '@/shared/lib/utils'
+import { handleEnterKeyFocus } from '@/shared/lib'
 
 interface Props {
   className?: string
@@ -58,6 +59,7 @@ export const AddressInput: React.FC<Props> = ({ className, onChange }) => {
         placeholder="Введите адрес..."
         value={query}
         onChange={handleInputChange}
+        onKeyDown={handleEnterKeyFocus}
       />
       {isDropdownVisible && (
         <ul
