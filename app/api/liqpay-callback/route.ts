@@ -55,7 +55,6 @@ export async function POST(req: NextRequest) {
     // Получение payment_id
     const paymentId = decodedData.payment_id
     const orderId = decodedData.order_id
-    console.log('Payment ID:', paymentId, orderId, decodedData)
 
     const order = await prisma.order.findFirst({
       where: {

@@ -1,9 +1,12 @@
 'use client'
+import React from 'react'
+import toast from 'react-hot-toast'
 import { useForm, FormProvider } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useCart } from '@/shared/hooks'
-import React from 'react'
 import { checkoutFormSchema, CheckoutFormValues } from '@/shared/constants'
+import { createOrder } from '@/app/actions'
+import { useSession } from 'next-auth/react'
 import {
   CheckoutSidebar,
   Container,
@@ -12,10 +15,10 @@ import {
   CheckoutAddressForm,
   CheckoutCart,
 } from '@/shared/components'
-import { createOrder } from '@/app/actions'
-import toast from 'react-hot-toast'
+import { Api } from '@/shared/services/api-client'
 
 export default function Checkout() {
+  const { data: session } = useSession()
   const [submitting, setSubmitting] = React.useState(false)
   const { totalAmount, items, updateItemQuantity, removeCartItem, loading } =
     useCart()
@@ -31,6 +34,21 @@ export default function Checkout() {
       comment: '',
     },
   })
+
+  React.useEffect(() => {
+    async function fetchUserInfo() {
+      const data = await Api.auth.getMe()
+      const [firstName, lastName] = data.fullName.split(' ')
+
+      form.setValue('firstName', firstName)
+      form.setValue('lastName', lastName)
+      form.setValue('email', data.email)
+    }
+
+    if (session) {
+      fetchUserInfo()
+    }
+  }, [session])
 
   const onSubmit = async (data: CheckoutFormValues) => {
     try {
@@ -86,7 +104,10 @@ export default function Checkout() {
             </div>
 
             <div className="w-[450px]">
-              <CheckoutSidebar totalAmount={totalAmount} loading={loading || submitting} />
+              <CheckoutSidebar
+                totalAmount={totalAmount}
+                loading={loading || submitting}
+              />
             </div>
           </div>
         </form>
