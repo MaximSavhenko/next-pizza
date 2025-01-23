@@ -7,6 +7,7 @@ import { RequiredSymbol } from '../required-symbol'
 import { ErrorText } from '../error-text'
 import { ClearButton } from '../clear-button'
 import { useFormContext } from 'react-hook-form'
+import { handleEnterKeyFocus } from '@/shared/lib'
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   name: string
@@ -26,12 +27,12 @@ export const FormInput: React.FC<Props> = ({
     register,
     formState: { errors },
     watch,
-    setValue
+    setValue,
   } = useFormContext()
 
   const value = watch(name)
   const errorText = errors[name]?.message as string
-  const handleClear = () => setValue(name, '', {shouldValidate: true})
+  const handleClear = () => setValue(name, '', { shouldValidate: true })
 
   return (
     <div className={cn('', className)}>
@@ -42,8 +43,13 @@ export const FormInput: React.FC<Props> = ({
       )}
 
       <div className="relative">
-        <Input {...props} {...register(name)} className="text-md h-12" />
-        {value && <ClearButton onClick={handleClear}/>}
+        <Input
+          {...props}
+          {...register(name)}
+          className="text-md h-12"
+          onKeyDown={handleEnterKeyFocus}
+        />
+        {value && <ClearButton onClick={handleClear} />}
       </div>
       {errorText && <ErrorText text={errorText} className="mb-2" />}
     </div>
