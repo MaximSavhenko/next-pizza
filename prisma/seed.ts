@@ -147,6 +147,67 @@ async function up() {
       },
     },
   })
+
+  const story1 = await prisma.story.create({
+    data: {
+      previewImageUrl: '/assets/images/storyes/storyes/50_2_4589b099c3.png',
+    },
+  })
+  const story2 = await prisma.story.create({
+    data: {
+      previewImageUrl: '/assets/images/storyes/storyes/burger_2_cbffebf338.png',
+    },
+  })
+  const story3 = await prisma.story.create({
+    data: {
+      previewImageUrl:
+        '/assets/images/storyes/storyes/burrito_2_841f1bdaec.png',
+    },
+  })
+  const story4 = await prisma.story.create({
+    data: {
+      previewImageUrl: '/assets/images/storyes/storyes/pizza_2_4bdc8dff6f.png',
+    },
+  })
+  const story5 = await prisma.story.create({
+    data: {
+      previewImageUrl: '/assets/images/storyes/storyes/tacos_2_f0e8970940.png',
+    },
+  })
+  const story6 = await prisma.story.create({
+    data: {
+      previewImageUrl: '/assets/images/storyes/storyes/week_2_bc66861586.png',
+    },
+  })
+
+  await prisma.storyItem.createMany({
+    data: [
+      {
+        storyId: story1.id,
+        sourceUrl: '/assets/images/storyes/storyItem/burger_3_39c0c2adf5.png',
+      },
+      {
+        storyId: story2.id,
+        sourceUrl: '/assets/images/storyes/storyItem/ua_50_3_1fd5f2d694.png',
+      },
+      {
+        storyId: story3.id,
+        sourceUrl: '/assets/images/storyes/storyItem/ua_pizza_1_afe383d33a.png',
+      },
+      {
+        storyId: story4.id,
+        sourceUrl: '/assets/images/storyes/storyItem/ua_pizza_2_9662d38b5b.png',
+      },
+      {
+        storyId: story5.id,
+        sourceUrl: '/assets/images/storyes/storyItem/ua_pizza_3_7eb2ec9008.png',
+      },
+      {
+        storyId: story6.id,
+        sourceUrl: '/assets/images/storyes/storyItem/ua_pizza_4_7f525d3a4a.png',
+      },
+    ],
+  })
 }
 
 async function down() {

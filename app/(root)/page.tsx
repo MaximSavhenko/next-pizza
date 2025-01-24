@@ -4,6 +4,7 @@ import {
   Title,
   Filters,
   ProductsGroupList,
+  Stories
 } from '@/shared/components/shared'
 import { Suspense } from 'react'
 import { findPizzas, GetSearchParams } from '@/shared/lib/find-pizzas'
@@ -16,6 +17,8 @@ export default async function Home({searchParams}:{ searchParams: GetSearchParam
       <Container className="mt-10">
         <Title text="Все пиццы" size="lg" className="font-extrabold" />
       </Container>
+
+      <Stories />
 
       <TopBar
         categories={categories.filter(
