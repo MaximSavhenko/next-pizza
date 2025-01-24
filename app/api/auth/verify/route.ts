@@ -5,9 +5,6 @@ export async function GET(req: NextRequest) {
   try {
     const code = req.nextUrl.searchParams.get('code')
 
-    console.log(code, req);
-    
-
     if (!code) {
       return NextResponse.json({ error: 'Неверный код' }, { status: 400 })
     }
