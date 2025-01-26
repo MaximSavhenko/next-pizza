@@ -4,7 +4,7 @@ import React from 'react'
 import { useIntersection } from 'react-use'
 import { Title } from './title'
 import { cn } from '@/shared/lib/utils'
-import { ProductCard } from './product-card'
+import { ProductCard } from '../../../app/[locale]/(root)/@modal/product-card'
 import { useCategoryStore } from '@/shared/store/category'
 import { ProductWithRelations } from '@/@types/prisma'
 

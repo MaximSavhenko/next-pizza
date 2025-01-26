@@ -3,7 +3,6 @@
 import React from 'react'
 import emptyBox from '../../../public/assets/images/empty-box.png'
 import Image from 'next/image'
-
 import {
   Sheet,
   SheetClose,
@@ -13,7 +12,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/shared/components/ui/sheet'
-import Link from 'next/link'
 import { Button } from '../ui'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { CartDrawerItem } from './cart-drawer-item'
@@ -21,6 +19,7 @@ import { getCartItemDetails } from '@/shared/lib'
 import { PizzaSize, PizzaType } from '@/shared/constants/pizza'
 import { Title } from './title'
 import { useCart } from '@/shared/hooks'
+import { Link } from '@/i18n/routing'
 
 interface Props {
   className?: string
@@ -115,7 +114,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
                   </span>
                   <span className="font-bold text-lg">{totalAmount} ₴</span>
                 </div>
-                <Link href="/checkout">
+                <Link href={'/checkout'}>
                   <Button
                     onClick={() => setRedirecting(true)}
                     loading={redirecting}

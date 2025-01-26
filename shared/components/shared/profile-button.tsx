@@ -1,8 +1,9 @@
-import { signIn, useSession } from 'next-auth/react'
+import { useSession } from 'next-auth/react'
 import React from 'react'
 import { Button } from '../ui'
 import { CircleUser, User } from 'lucide-react'
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
+import { useTranslations } from 'next-intl'
 
 interface Props {
   onClickSignIn?: () => void
@@ -14,6 +15,7 @@ export const ProfileButton: React.FC<Props> = ({
   onClickSignIn,
 }) => {
   const { data: session } = useSession()
+  const t = useTranslations('HomePage');
 
   return (
     <div className={className}>
@@ -27,13 +29,13 @@ export const ProfileButton: React.FC<Props> = ({
           Войти
         </Button>
       ) : (
-        <Link href="/profile">
+        <Link href={'/profile'}>
           <Button
             variant="secondary"
             className="flex items-center gap-2"
           >
             <CircleUser size={16} />
-            Профиль
+            {t('Profile')}
           </Button>
         </Link>
       )}
