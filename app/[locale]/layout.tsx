@@ -1,7 +1,7 @@
 import { Nunito } from 'next/font/google'
 import './globals.css'
 import { Providers } from '@/shared/components'
-import { getMessages } from 'next-intl/server'
+import { getMessages, getTimeZone } from 'next-intl/server'
 import { getLocale } from 'next-intl/server'
 
 
@@ -19,6 +19,7 @@ export default async function RootLayout({
 }>) {
   const messages = await getMessages()
   const locale = await getLocale()
+  const timeZone = await getTimeZone()
 
   return (
     <html lang={locale}>
@@ -26,7 +27,7 @@ export default async function RootLayout({
         <link data-rh="true" rel="icon" href="/logo.png" />
       </head>
       <body className={`${nunito.variable} antialiased`}>
-        <Providers locale={locale} messages={messages}>
+        <Providers locale={locale} messages={messages} timeZone={timeZone}>
           {children}
         </Providers>
       </body>

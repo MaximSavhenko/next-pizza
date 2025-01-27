@@ -11,6 +11,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import toast from 'react-hot-toast'
 import { ProfileButton } from './profile-button'
 import { AuthModal } from './modals/auth-modal'
+import { LanguageButtons } from './language-buttons'
 
 interface Props {
   hasSearch?: boolean
@@ -81,6 +82,7 @@ export const Header: React.FC<Props> = ({
           />
           <ProfileButton onClickSignIn={() => setOpenAuthModal(true)} />
           {hasCart && <CartButton />}
+          <LanguageButtons />
         </div>
       </Container>
     </header>
