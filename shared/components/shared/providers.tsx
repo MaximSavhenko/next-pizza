@@ -5,7 +5,7 @@ import { Toaster } from 'react-hot-toast'
 import { SessionProvider } from 'next-auth/react'
 import NextTopLoader from 'nextjs-toploader'
 import { AbstractIntlMessages, NextIntlClientProvider } from 'next-intl'
-import { NuqsAdapter } from 'nuqs/adapters/next/app'
+
 interface ProvidersProps {
   messages: AbstractIntlMessages
   children: React.ReactNode
