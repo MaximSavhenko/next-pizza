@@ -33,7 +33,7 @@ export const ProductForm: React.FC<Props> = ({
       })
 
       toast.success(
-        t(`ProductItem.${product.name}`) + `${t('already in the basket!')} :)`
+        t(`ProductItem.${product.name}`) + ` ${t('already in the basket!')} :)`
       )
       _onSubmit?.()
     } catch (error) {
