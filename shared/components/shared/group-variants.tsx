@@ -1,6 +1,7 @@
 'use client'
 
 import { cn } from '@/shared/lib/utils'
+import { useTranslations } from 'next-intl'
 import React from 'react'
 
 export type Variant = {
@@ -22,6 +23,7 @@ export const GroupVariants: React.FC<Props> = ({
   value,
   className,
 }) => {
+  const t = useTranslations('HomePage')
   return (
     <div
       className={cn(
@@ -41,7 +43,7 @@ export const GroupVariants: React.FC<Props> = ({
             }
           )}
         >
-          {item.name}
+          {t(`Filter.${item.name}`)}
         </button>
       ))}
     </div>

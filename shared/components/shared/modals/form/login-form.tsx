@@ -6,6 +6,7 @@ import { FormInput } from '../../form'
 import { Button } from '@/shared/components/ui'
 import toast from 'react-hot-toast'
 import { signIn } from 'next-auth/react'
+import { useTranslations } from 'next-intl'
 
 interface Props {
   className?: string
@@ -19,6 +20,7 @@ export const LoginForm: React.FC<Props> = ({ className, onClose }) => {
       password: '',
     },
   })
+  const t = useTranslations('HomePage')
 
   const onSubmit = async (data: TFormLoginValues) => {
     try {
@@ -30,14 +32,17 @@ export const LoginForm: React.FC<Props> = ({ className, onClose }) => {
         throw Error()
       }
 
-      toast.success('Вы успешно вошли в аккаунт', {
-        icon: '😊',
-      })
+      toast.success(
+        t('AuthModal.You have successfully logged into your account'),
+        {
+          icon: '😊',
+        }
+      )
 
       onClose?.()
     } catch (error) {
       console.log('Error [LOGIN]', error)
-      toast.error('Не удалось войти в аккаунт', {
+      toast.error(t('AuthModal.Failed to log into your account'), {
         icon: '⚠️',
       })
     }
@@ -51,9 +56,13 @@ export const LoginForm: React.FC<Props> = ({ className, onClose }) => {
       >
         <div className="flex justify-between items-center">
           <div className="mr-2">
-            <Title text="Вход в аккаунт" size="md" className="font-bold" />
+            <Title
+              text={t('AuthModal.Login to your account')}
+              size="md"
+              className="font-bold"
+            />
             <p className="text-gray-400">
-              Введите свою почту , чтобы войти в свой аккаунт
+              {t('AuthModal.Enter your email to log into your account')}
             </p>
           </div>
           <img
@@ -65,14 +74,19 @@ export const LoginForm: React.FC<Props> = ({ className, onClose }) => {
         </div>
 
         <FormInput name="email" label="E-mail" required />
-        <FormInput name="password" label="Пароль" type="password" required />
+        <FormInput
+          name="password"
+          label={t('AuthModal.Password')}
+          type="password"
+          required
+        />
 
         <Button
           loading={form.formState.isSubmitting}
           className="h-12 text-base"
           type="submit"
         >
-          Войти
+          {t('Login')}
         </Button>
       </form>
     </FormProvider>

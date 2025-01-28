@@ -8,6 +8,7 @@ import { registerUser } from '@/app/actions';
 import { TFormRegisterValues, formRegisterSchema } from './schemas';
 import { FormInput } from '@/shared/components';
 import { Button } from '@/shared/components/ui';
+import { useTranslations } from 'next-intl';
 
 interface Props {
   onClose?: VoidFunction;
@@ -15,6 +16,7 @@ interface Props {
 }
 
 export const RegisterForm: React.FC<Props> = ({ onClose, onClickLogin }) => {
+  const t = useTranslations('HomePage')
   const form = useForm<TFormRegisterValues>({
     resolver: zodResolver(formRegisterSchema),
     defaultValues: {
@@ -33,13 +35,13 @@ export const RegisterForm: React.FC<Props> = ({ onClose, onClickLogin }) => {
         password: data.password,
       });
 
-      toast.error('Регистрация успешна 📝. Подтвердите свою почту', {
+      toast.error(t('AuthModal.Registration successfulConfirm your email'), {
         icon: '✅',
       });
 
       onClose?.();
     } catch (error) {
-      return toast.error('Неверный E-Mail или пароль', {
+      return toast.error(t('AuthModal.Incorrect email or password'), {
         icon: '❌',
       });
     }
@@ -49,12 +51,12 @@ export const RegisterForm: React.FC<Props> = ({ onClose, onClickLogin }) => {
     <FormProvider {...form}>
       <form className="flex flex-col gap-5" onSubmit={form.handleSubmit(onSubmit)}>
         <FormInput name="email" label="E-Mail" required />
-        <FormInput name="fullName" label="Полное имя" required />
-        <FormInput name="password" label="Пароль" type="password" required />
-        <FormInput name="confirmPassword" label="Подтвердите пароль" type="password" required />
+        <FormInput name="fullName" label={t('AuthModal.Full name')} required />
+        <FormInput name="password" label={t('AuthModal.Password')} type="password" required />
+        <FormInput name="confirmPassword" label={t('AuthModal.Confirm password')} type="password" required />
 
         <Button loading={form.formState.isSubmitting} className="h-12 text-base" type="submit">
-          Зарегистрироваться
+          {t('AuthModal.Register')}
         </Button>
       </form>
     </FormProvider>

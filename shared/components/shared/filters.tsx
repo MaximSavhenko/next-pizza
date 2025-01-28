@@ -6,17 +6,18 @@ import { Input } from '../ui'
 import { RangeSlider } from './range-slider'
 import { CheckboxFiltersGroup } from './checkbox-filters-group'
 import { useQueryFilters, useFilters, useIngredients } from '@/shared/hooks'
+import { useTranslations } from 'next-intl'
 
 interface Props {
   className?: string
 }
 
 export const Filters: React.FC<Props> = ({ className }) => {
+  const t = useTranslations('HomePage.Filter')
   const { ingredients, loading } = useIngredients()
   const filters = useFilters()
 
   const updatePrices = (prices: number[]) => {
-    console.log(prices)
     filters.setPrices('priceFrom', prices[0])
     filters.setPrices('priceTo', prices[1])
   }
@@ -30,35 +31,35 @@ export const Filters: React.FC<Props> = ({ className }) => {
 
   return (
     <div className="{className}">
-      <Title text="Фильтрация" size="sm" className="mb-5 font-bold" />
+      <Title text={t('Filtration')} size="sm" className="mb-5 font-bold" />
 
       <CheckboxFiltersGroup
-        title="Тип теста"
+        title={t('Test type')}
         name="pizzaTypes"
         className="mt-5"
         onClickCheckbox={filters.setPizzaTypes}
         selected={filters.pizzaTypes}
         items={[
-          { text: 'Тонкое', value: '1' },
-          { text: 'Традиционное', value: '2' },
+          { text: 'Thin', value: '1' },
+          { text: 'Traditional', value: '2' },
         ]}
       />
 
       <CheckboxFiltersGroup
-        title="Размеры"
+        title={t('Dimensions')}
         name="pizzaSizes"
         className="mt-5"
         onClickCheckbox={filters.setSizes}
         selected={filters.sizes}
         items={[
-          { text: '20см', value: '20' },
-          { text: '30см', value: '30' },
-          { text: '40см', value: '40' },
+          { text: '20sm', value: '20' },
+          { text: '30sm', value: '30' },
+          { text: '40sm', value: '40' },
         ]}
       />
 
       <div className="mt-5 border-y border-y-neutral-100 py-6 pb-7">
-        <p className="font-bold mb-3">Цена от и до:</p>
+        <p className="font-bold mb-3">{t('Price from and to')}:</p>
         <div className="flex gap-3 mb-5">
           <Input
             type="number"
@@ -95,7 +96,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
       </div>
 
       <CheckboxFiltersGroup
-        title="Ингредиенты"
+        title={t('Ingredients')}
         className="mt-5"
         limit={6}
         defaultItems={items.slice(0, 6)}

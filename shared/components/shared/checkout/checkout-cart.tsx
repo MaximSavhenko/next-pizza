@@ -5,6 +5,7 @@ import { getCartItemDetails } from '@/shared/lib'
 import { PizzaSize, PizzaType } from '@/shared/constants/pizza'
 import { CartStateItem } from '@/shared/lib/get-cart-details'
 import { CheckoutItemSkeleton } from '../checkout-item-skeleton'
+import { useTranslations } from 'next-intl'
 
 interface Props {
   items: CartStateItem[]
@@ -25,8 +26,9 @@ export const CheckoutCart: React.FC<Props> = ({
   removeCartItem,
   loading,
 }) => {
+  const t = useTranslations('CartPage')
   return (
-    <WhiteBlock title="1.Корзина" className={className}>
+    <WhiteBlock title={t('Basket')} className={className}>
       <div className="flex flex-col gap-5">
         {loading
           ? [...Array(4)].map((_, index) => (

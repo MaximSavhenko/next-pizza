@@ -5,6 +5,7 @@ import { cn } from '@/shared/lib/utils'
 import { useCategoryStore } from '@/shared/store/category'
 import { Category } from '@prisma/client'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 
 interface Props {
   items: Category[]
@@ -12,6 +13,7 @@ interface Props {
 }
 
 export const Categories: React.FC<Props> = ({ className, items }) => {
+  const t = useTranslations('HomePage')
   const categoryActiveId = useCategoryStore((state) => state.activeId)
   return (
     <div
@@ -27,7 +29,7 @@ export const Categories: React.FC<Props> = ({ className, items }) => {
               'bg-white shadow-sm shadow-gray-200 text-primary'
           )}
         >
-          <button>{name}</button>
+          <button type='button'>{t(name)}</button>
         </Link>
       ))}
     </div>

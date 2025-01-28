@@ -11,6 +11,7 @@ import {
   GroupVariants,
 } from '@/shared/components/shared'
 import { usePizzaOptions } from '@/shared/hooks'
+import { useTranslations } from 'next-intl'
 
 interface Props {
   imageUrl: string
@@ -29,7 +30,7 @@ export const ChoosePizzaForm: React.FC<Props> = ({
   items,
   onSubmit,
   className,
-  loading
+  loading,
 }) => {
   const {
     size,
@@ -56,14 +57,16 @@ export const ChoosePizzaForm: React.FC<Props> = ({
     }
   }
 
+  const t = useTranslations('HomePage')
+
   return (
     <div className={cn(className, 'flex flex-1')}>
       <PizzaImage imageUrl={imageUrl} size={size} />
 
       <div className="w-[490px] bg-[#FFF7EE] p-7">
-        <Title text={name} size="md" className="font-extrabold mb-1" />
+        <Title text={t(`ProductItem.${name}`)} size="md" className="font-extrabold mb-1" />
 
-        <p className="text-gray-400">{textDetaills}</p>
+        <p className="text-gray-400">{t(`Filter.${textDetaills}`)}</p>
 
         <div className="flex flex-1 flex-col gap-5 mt-5">
           <GroupVariants
@@ -84,7 +87,7 @@ export const ChoosePizzaForm: React.FC<Props> = ({
             {ingredients.map((ingredient) => (
               <IngredientItem
                 key={ingredient.id}
-                name={ingredient.name}
+                name={t(`IngredientsItem.${ingredient.name}`)}
                 price={ingredient.price}
                 imageUrl={ingredient.imageUrl}
                 onClick={() => addIngredient(ingredient.id)}
@@ -99,7 +102,7 @@ export const ChoosePizzaForm: React.FC<Props> = ({
           className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10"
           onClick={handleClickAdd}
         >
-          Добавить в корзину за {totalPrice} ₴
+          {t('Add to cart for')} {totalPrice} ₴
         </Button>
       </div>
     </div>

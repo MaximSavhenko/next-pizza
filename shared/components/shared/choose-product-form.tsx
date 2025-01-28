@@ -2,6 +2,7 @@ import React from 'react'
 import { Title } from './title'
 import { cn } from '@/shared/lib/utils'
 import { Button } from '../ui'
+import { useTranslations } from 'next-intl'
 
 interface Props {
   imageUrl: string
@@ -20,6 +21,7 @@ export const ChooseProductForm: React.FC<Props> = ({
   className,
   loading,
 }) => {
+  const t = useTranslations('HomePage')
   return (
     <div className={cn(className, 'flex flex-1 justify-between')}>
       <div className="flex flex-1 items-center justify-center relative w-full">
@@ -31,13 +33,13 @@ export const ChooseProductForm: React.FC<Props> = ({
       </div>
 
       <div className="w-[490px] bg-[#FFF7EE] p-7 flex flex-1 flex-col justify-between">
-        <Title text={name} size="md" className="font-extrabold mb-1" />
+        <Title text={t(`ProductItem.${name}`)} size="md" className="font-extrabold mb-1" />
         <Button
           loading={loading}
           onClick={()=> onSubmit?.()}
           className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10"
         >
-          Добавить в корзину за {price} ₴
+          {t('Add to cart for')} {price} ₴
         </Button>
       </div>
     </div>

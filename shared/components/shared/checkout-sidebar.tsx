@@ -4,6 +4,7 @@ import { CheckoutItemDetails } from './checkout-item-details'
 import { Button, Skeleton } from '../ui'
 import { ArrowRight, Package, Percent, Truck } from 'lucide-react'
 import { cn } from '@/shared/lib/utils'
+import { useTranslations } from 'next-intl'
 
 interface Props {
   totalAmount: number
@@ -18,13 +19,14 @@ export const CheckoutSidebar: React.FC<Props> = ({
   totalAmount,
   loading,
 }) => {
+  const t = useTranslations('CartPage')
   const vatPrice = (totalAmount * VAT) / 100
   const totalPrice = totalAmount + DELIVERY_PRICE + vatPrice
 
   return (
     <WhiteBlock className={cn('p-6 sticky top-4', className)}>
       <div className="flex flex-col gap-1">
-        <span className="text-xl">Итого:</span>
+        <span className="text-xl">{t('Total')}:</span>
         {loading ? (
           <Skeleton className="w-48 h-11" />
         ) : (
@@ -38,7 +40,7 @@ export const CheckoutSidebar: React.FC<Props> = ({
         title={
           <div className="flex items-center">
             <Package size={18} className="mr-2 text-gray-300" />
-            Стоимость корзины:
+            {t('Basket price')}:
           </div>
         }
         value={
@@ -53,7 +55,7 @@ export const CheckoutSidebar: React.FC<Props> = ({
         title={
           <div className="flex items-center">
             <Percent size={18} className="mr-2 text-gray-300" />
-            Налоги:
+            {t('Taxes')}:
           </div>
         }
         value={
@@ -68,7 +70,7 @@ export const CheckoutSidebar: React.FC<Props> = ({
         title={
           <div className="flex items-center">
             <Truck size={18} className="mr-2 text-gray-300" />
-            Доставка:
+            {t('Delivery')}:
           </div>
         }
         value={
@@ -84,7 +86,7 @@ export const CheckoutSidebar: React.FC<Props> = ({
         className="w-full h-14 rounded-2xl mt-6 text-base font-bold"
         loading={loading}
       >
-        Перейти к оплате
+        {t('Proceed to payment')}
         <ArrowRight className="w-5 ml-2" />
       </Button>
     </WhiteBlock>

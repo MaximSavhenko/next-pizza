@@ -3,6 +3,7 @@
 import React from 'react'
 import { FilterChecboxProps, FilterCheckbox } from './filter-checkbox'
 import { Input, Skeleton } from '../ui'
+import { useTranslations } from 'next-intl'
 
 type Item = FilterChecboxProps
 
@@ -25,7 +26,7 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
   items,
   defaultItems,
   limit = 5,
-  searchInputPlaceholder = 'Поиск...',
+  searchInputPlaceholder = 'Search',
   loading,
   onClickCheckbox,
   selected,
@@ -35,6 +36,7 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
 }) => {
   const [showAll, setShowAll] = React.useState(false)
   const [searchValue, setSearchValue] = React.useState('')
+  const t = useTranslations("HomePage.Filter")
 
   if (loading) {
     return (
@@ -66,7 +68,7 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
         <div className="mb-5">
           <Input
             onChange={onChangeSearchInput}
-            placeholder={searchInputPlaceholder}
+            placeholder={t(searchInputPlaceholder)}
             className="bg-gray-50 border-none"
           />
         </div>
@@ -92,7 +94,7 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
             onClick={() => setShowAll(!showAll)}
             className="text-primary mt-3"
           >
-            {showAll ? 'Скрыть' : '+ Показать все'}
+            {showAll ? t('Hide') : t('Show all')}
           </button>
         </div>
       )}

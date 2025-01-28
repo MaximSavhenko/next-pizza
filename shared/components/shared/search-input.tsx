@@ -5,6 +5,7 @@ import { cn } from '@/shared/lib/utils'
 import { Api } from '@/shared/services/api-client'
 import { Product } from '@prisma/client'
 import { Search } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import React, { useRef } from 'react'
 import { useClickAway, useDebounce } from 'react-use'
 
@@ -13,6 +14,7 @@ interface Props {
 }
 
 export const SearchInput: React.FC<Props> = ({ className }) => {
+  const t = useTranslations('HomePage')
   const [searchQuery, setSearchQuery] = React.useState('')
   const [focused, setFoicused] = React.useState(false)
   const [products, setProducts] = React.useState<Product[]>([])
@@ -57,7 +59,7 @@ export const SearchInput: React.FC<Props> = ({ className }) => {
         <input
           className="rounded-2xl outline-none w-full bg-gray-100 pl-11"
           type="text"
-          placeholder="Найти пиццу..."
+          placeholder={`${t('Find pizza')}...`}
           value={searchQuery}
           onFocus={() => setFoicused(true)}
           onChange={(e) => setSearchQuery(e.target.value)}

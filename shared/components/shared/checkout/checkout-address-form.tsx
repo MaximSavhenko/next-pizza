@@ -6,6 +6,7 @@ import { FormTextarea } from '../form'
 import { AddressInput } from '../address-input'
 import { Controller, useFormContext } from 'react-hook-form'
 import { ErrorText } from '../error-text'
+import { useTranslations } from 'next-intl'
 
 interface Props {
   className?: string
@@ -13,8 +14,9 @@ interface Props {
 
 export const CheckoutAddressForm: React.FC<Props> = ({ className }) => {
   const { control } = useFormContext()
+  const t = useTranslations('CartPage')
   return (
-    <WhiteBlock title="3. Адрес доставки" className={className}>
+    <WhiteBlock title={t('Delivery address')} className={className}>
       <div className="flex flex-col gap-5">
         <Controller
           control={control}
@@ -32,7 +34,7 @@ export const CheckoutAddressForm: React.FC<Props> = ({ className }) => {
           name="comment"
           rows={5}
           className="text-base"
-          placeholder="Комментарий к заказу"
+          placeholder={t('CartForm.Comment to order')}
         />
       </div>
     </WhiteBlock>

@@ -1,11 +1,13 @@
-import { cn } from '@/shared/lib/utils';
-import React from 'react';
+import { cn } from '@/shared/lib/utils'
+import { useTranslations } from 'next-intl'
+import React from 'react'
 
 interface Props {
-  text: string;
-  className?: string;
+  text: string
+  className?: string
 }
 
 export const ErrorText: React.FC<Props> = ({ text, className }) => {
-  return <p className={cn('text-red-500 text-sm', className)}>{text}</p>;
-};
+  const t = useTranslations('HomePage')
+  return <p className={cn('text-red-500 text-sm', className)}>{t(`AuthModal.${text}`)}</p>
+}

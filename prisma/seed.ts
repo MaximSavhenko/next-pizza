@@ -58,7 +58,7 @@ async function up() {
 
   const pizza1 = await prisma.product.create({
     data: {
-      name: 'Пеппер Халапеньо',
+      name: 'Pepper Jalapeño',
       imageUrl: 'https://adminbm.kharkiv.ua/uploads/DSC_09531_1dc1010755.webp',
       categoryId: 1,
       ingredients: {
@@ -69,7 +69,7 @@ async function up() {
 
   const pizza2 = await prisma.product.create({
     data: {
-      name: 'Белла Страчателла',
+      name: 'Bella Stracciatella',
       imageUrl: 'https://adminbm.kharkiv.ua/uploads/DSC_09573_05b9f4a940.webp',
       categoryId: 1,
       ingredients: {
@@ -80,7 +80,7 @@ async function up() {
 
   const pizza3 = await prisma.product.create({
     data: {
-      name: 'Фета Полло',
+      name: 'Feta Pollo',
       imageUrl: 'https://adminbm.kharkiv.ua/uploads/DSC_09556_7f4272c023.webp',
       categoryId: 1,
       ingredients: {

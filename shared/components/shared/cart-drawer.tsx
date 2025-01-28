@@ -20,6 +20,7 @@ import { PizzaSize, PizzaType } from '@/shared/constants/pizza'
 import { Title } from './title'
 import { useCart } from '@/shared/hooks'
 import { Link } from '@/i18n/routing'
+import { useTranslations } from 'next-intl'
 
 interface Props {
   className?: string
@@ -42,8 +43,12 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
     updateItemQuantity(id, newQuantity)
   }
 
+  const t = useTranslations('HomePage')
+
   const quantityItems =
-    items.length > 1 ? `${items.length} товара` : `${items.length} товар`
+    items.length > 1
+      ? `${items.length} ${t('Cart.products')}`
+      : `${items.length} ${t('Cart.product')}`
 
   return (
     <Sheet>
@@ -53,7 +58,8 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
           <>
             <SheetHeader>
               <SheetTitle>
-                В корзине <span className="font-bold">{quantityItems}</span>
+                {t('Cart.In the basket')}{' '}
+                <span className="font-bold">{quantityItems}</span>
               </SheetTitle>
             </SheetHeader>
           </>
@@ -64,16 +70,16 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
             <Image src={emptyBox} alt="empty cart" width={120} height={120} />
             <Title
               size="sm"
-              text="Корзина пустая"
+              text={t('Cart.The basket is empty')}
               className="text-center font-bold my-2"
             />
             <p className="text-center text-neutral-500 mb-5">
-              Добавте хоть одну пиццу, чтобы совершить заказ
+              {t('Cart.Add at least one pizza to complete your order')}
             </p>
             <SheetClose>
-              <Button size="lg" className="w-56 h-12 text-base">
+              <Button size="lg" className="h-12 text-base">
                 <ArrowLeft className="w-5 mr-2" />
-                Вернуться назад
+                {t('Cart.Go back')}
               </Button>
             </SheetClose>
           </div>
@@ -109,7 +115,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
               <div className="w-full">
                 <div className="flex mb-4">
                   <span className="flex flex-1 text-lg text-neutral-500">
-                    Итого
+                      {t('Cart.Total')}
                     <div className="flex-1 border-b border-dashed border-b-neutral-200 relative -top-1 mx-2" />
                   </span>
                   <span className="font-bold text-lg">{totalAmount} ₴</span>
@@ -121,7 +127,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
                     type="submit"
                     className="w-full h-12 text-base"
                   >
-                    Оформить заказ
+                    {t('Cart.Place an order')}
                     <ArrowRight className="w-5 ml-2" />
                   </Button>
                 </Link>

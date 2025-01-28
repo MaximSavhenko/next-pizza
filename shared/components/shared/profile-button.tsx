@@ -26,7 +26,7 @@ export const ProfileButton: React.FC<Props> = ({
           className="flex items-center gap-1"
         >
           <User size={16} />
-          Войти
+          {t('Login')}
         </Button>
       ) : (
         <Link href={'/profile'}>

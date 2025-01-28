@@ -1,5 +1,6 @@
 import React from 'react';
 import { Checkbox } from '../ui/checkbox';
+import { useTranslations } from 'next-intl';
 
 export interface FilterChecboxProps {
   text: string;
@@ -18,6 +19,7 @@ export const FilterCheckbox: React.FC<FilterChecboxProps> = ({
   checked,
   name,
 }) => {
+  const t = useTranslations('HomePage.Filter')
   return (
     <div className="flex items-center space-x-2">
       <Checkbox
@@ -30,7 +32,7 @@ export const FilterCheckbox: React.FC<FilterChecboxProps> = ({
       <label
         htmlFor={`checkbox-${String(name)}-${String(value)}`}
         className="leading-none cursor-pointer flex-1">
-        {text}
+        {t(text)}
       </label>
       {endAdornment}
     </div>

@@ -1,6 +1,7 @@
 import React from 'react'
 import { WhiteBlock } from '../white-block'
 import { FormInput, FormMaskedInput } from '../form'
+import { useTranslations } from 'next-intl'
 
 interface Props {
   className?: string
@@ -9,14 +10,15 @@ interface Props {
 export const CheckoutPersonalForm: React.FC<Props> = ({
   className,
 }) => {
+  const t = useTranslations('CartPage')
   return (
-    <WhiteBlock title="2. Персональная информация" className={className}>
+    <WhiteBlock title={t('Personal information')} className={className}>
       <div className="grid grid-cols-2 gap-5">
-        <FormInput name="firstName" className="text-base" placeholder="Имя" />
+        <FormInput name="firstName" className="text-base" placeholder={t('CartForm.Name')} />
         <FormInput
           name="lastName"
           className="text-base"
-          placeholder="Фамилия"
+          placeholder={t('CartForm.Surname')}
         />
         <FormInput name="email" className="text-base" placeholder="E-Mail" />
         <FormMaskedInput

@@ -5,6 +5,7 @@ import React, { useEffect, useRef } from 'react'
 import { Input } from '../ui'
 import { cn } from '@/shared/lib/utils'
 import { handleEnterKeyFocus } from '@/shared/lib'
+import { useTranslations } from 'next-intl'
 
 interface Props {
   className?: string
@@ -12,6 +13,7 @@ interface Props {
 }
 
 export const AddressInput: React.FC<Props> = ({ className, onChange }) => {
+  const t = useTranslations('CartPage')
   const [query, setQuery] = React.useState('')
   const [isDropdownVisible, setDropdownVisible] = React.useState(false)
   const { data, loading, error } = useAddressSearch({
@@ -26,11 +28,10 @@ export const AddressInput: React.FC<Props> = ({ className, onChange }) => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
     setQuery(value)
-    setDropdownVisible(true) // Показываем список при вводе текста
-    onChange?.(value) // Вызываем переданный onChange
+    setDropdownVisible(true) 
+    onChange?.(value)
   }
 
-  // Закрытие выпадающего списка при клике вне компонента
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -56,7 +57,7 @@ export const AddressInput: React.FC<Props> = ({ className, onChange }) => {
         name="address"
         ref={inputRef}
         className={cn('text-base h-12', className)}
-        placeholder="Введите адрес..."
+        placeholder={t('CartForm.Enter address')}
         value={query}
         onChange={handleInputChange}
         onKeyDown={handleEnterKeyFocus}
@@ -68,20 +69,20 @@ export const AddressInput: React.FC<Props> = ({ className, onChange }) => {
         >
           {/* Загрузка */}
           {loading && (
-            <li className="py-2 px-3 text-center text-gray-500">Загрузка...</li>
+            <li className="py-2 px-3 text-center text-gray-500">{t('CartForm.Loading')}</li>
           )}
 
           {/* Ошибка */}
           {error && (
             <li className="py-2 px-3 text-center text-red-500">
-              Ошибка загрузки
+              {t('CartForm.Loading error')}
             </li>
           )}
 
           {/* Нет данных */}
           {!loading && !data?.length && query && (
             <li className="py-2 px-3 text-center text-gray-400">
-              Ничего не найдено
+              {t('CartForm.Nothing found')}
             </li>
           )}
 

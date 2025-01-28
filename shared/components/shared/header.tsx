@@ -12,6 +12,7 @@ import toast from 'react-hot-toast'
 import { ProfileButton } from './profile-button'
 import { AuthModal } from './modals/auth-modal'
 import { LanguageButtons } from './language-buttons'
+import { useTranslations } from 'next-intl'
 
 interface Props {
   hasSearch?: boolean
@@ -24,6 +25,7 @@ export const Header: React.FC<Props> = ({
   hasSearch = true,
   hasCart = true,
 }) => {
+  const t = useTranslations('HomePage')
   const router = useRouter()
   const [openAuthModal, setOpenAuthModal] = React.useState(false)
   const searchParams = useSearchParams()
@@ -34,11 +36,11 @@ export const Header: React.FC<Props> = ({
 
     if (searchParams.has('paid')) {
       tostMessage =
-        'Ваш заказ успешно оплачен! Информация отправлена на почту 🍕🎉'
+        t('Your order has been successfully paid! Information has been sent to your email')
     }
 
     if (searchParams.has('verified')) {
-      tostMessage = 'Почта успешно подтверждена 🍕🎉'
+      tostMessage = t('Email successfully verified')
     }
 
     if (tostMessage) {

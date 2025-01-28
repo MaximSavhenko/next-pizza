@@ -12,7 +12,7 @@ export const LanguageButtons: React.FC = () => {
 
   return (
     <div className="flex space-x-2">
-      {['en', 'uk'].map((lang) => (
+      {['uk', 'en'].map((lang) => (
         <Link
           key={lang}
           href={`/${lang}${pathname}`}

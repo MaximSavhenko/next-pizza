@@ -8,6 +8,7 @@ import { signIn } from 'next-auth/react'
 import React from 'react'
 import { LoginForm } from '../form/login-form'
 import { RegisterForm } from '../form/register-form'
+import { useTranslations } from 'next-intl'
 
 interface Props {
   className?: string
@@ -25,6 +26,8 @@ export const AuthModal: React.FC<Props> = ({ className, open, onClose }) => {
   const handleClose = () => {
     onClose()
   }
+
+  const t = useTranslations('HomePage')
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
@@ -82,7 +85,7 @@ export const AuthModal: React.FC<Props> = ({ className, open, onClose }) => {
           type="button"
           className="h-12"
         >
-          {type === 'login' ? 'Регистрация' : ' Вход'}
+          {type === 'login' ? t('AuthModal.Registration') : t('Login')}
         </Button>
       </DialogContent>
     </Dialog>

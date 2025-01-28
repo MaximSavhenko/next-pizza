@@ -1,7 +1,9 @@
 import { Header, InfoBlock } from '@/shared/components'
+import { useTranslations } from 'next-intl'
 import { Suspense } from 'react'
 
 export default function UnauthorizedPage() {
+  const t = useTranslations('404')
   return (
     <>
       <Suspense>
@@ -9,8 +11,8 @@ export default function UnauthorizedPage() {
       </Suspense>
       <div className="flex flex-col items-center justify-center mt-40">
         <InfoBlock
-          title="Страница не найдена"
-          text="Проверьте корректность введённого адреса или повторите попытку позже"
+          title={t('Page not found')}
+          text={t('Please check the address you entered is correct or try again later')}
           imageUrl="/assets/images/not-found.png"
         />
       </div>

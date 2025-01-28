@@ -16,8 +16,10 @@ import {
   CheckoutCart,
 } from '@/shared/components'
 import { Api } from '@/shared/services/api-client'
+import { useTranslations } from 'next-intl'
 
 export default function Checkout() {
+  const t = useTranslations('CartPage')
   const { data: session } = useSession()
   const [submitting, setSubmitting] = React.useState(false)
   const { totalAmount, items, updateItemQuantity, removeCartItem, loading } =
@@ -54,7 +56,7 @@ export default function Checkout() {
     try {
       const url = await createOrder(data)
       setSubmitting(true)
-      toast.success('Заказ успешно оформлен! Переход на оплату...', {
+      toast.success(t('Order successfully placed! Proceed to payment'), {
         icon: '✅',
       })
       if (url) {
@@ -63,7 +65,7 @@ export default function Checkout() {
     } catch (error) {
       console.error(error)
       setSubmitting(false)
-      toast.error('Не удалось создать заказ', {
+      toast.error(t('Failed to create order'), {
         icon: '❌',
       })
     }
@@ -81,7 +83,7 @@ export default function Checkout() {
   return (
     <Container>
       <Title
-        text="Оформление заказа"
+        text={t('Placing an order')}
         className="font-extrabold mb-8 text-[36px] mt-10"
       />
 

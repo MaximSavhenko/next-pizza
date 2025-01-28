@@ -7,6 +7,7 @@ import toast from 'react-hot-toast'
 import { useShallow } from 'zustand/react/shallow'
 import { ChoosePizzaForm } from './choose-pizza-form'
 import { ChooseProductForm } from './choose-product-form'
+import { useTranslations } from 'next-intl'
 
 interface Props {
   onSubmit?: VoidFunction
@@ -17,6 +18,7 @@ export const ProductForm: React.FC<Props> = ({
   onSubmit: _onSubmit,
   product,
 }) => {
+  const t = useTranslations('HomePage')
   const [addCartItem, loading] = useCartStore(
     useShallow((state) => [state.addCartItem, state.loading])
   )
@@ -30,10 +32,12 @@ export const ProductForm: React.FC<Props> = ({
         ingredients,
       })
 
-      toast.success(product.name + ' уже в корзине! :)')
+      toast.success(
+        t(`ProductItem.${product.name}`) + `${t('already in the basket!')} :)`
+      )
       _onSubmit?.()
     } catch (error) {
-      toast.error('Не удалось добавить товар в корзину :(')
+      toast.error(t('Failed to add item to cart :('))
       console.error(error)
     }
   }

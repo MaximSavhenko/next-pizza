@@ -4,6 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { Title } from './title';
 import Link from 'next/link';
 import { cn } from '@/shared/lib/utils';
+import { useTranslations } from 'next-intl';
 
 interface Props {
   title: string;
@@ -13,6 +14,7 @@ interface Props {
 }
 
 export const InfoBlock: React.FC<Props> = ({ className, title, text, imageUrl }) => {
+  const t = useTranslations('404')
   return (
     <div className={cn(className, 'flex items-center justify-between w-[840px] gap-12')}>
       <div className="flex flex-col">
@@ -25,12 +27,12 @@ export const InfoBlock: React.FC<Props> = ({ className, title, text, imageUrl })
           <Link href="/">
             <Button variant="outline" className="gap-2">
               <ArrowLeft />
-              На главную
+              {t('To the main page')}
             </Button>
           </Link>
           <a href="">
             <Button variant="outline" className="text-gray-500 border-gray-400 hover:bg-gray-50">
-              Обновить
+              {t('Refresh')}
             </Button>
           </a>
         </div>

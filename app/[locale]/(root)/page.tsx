@@ -8,6 +8,7 @@ import {
 } from '@/shared/components/shared'
 import { Suspense } from 'react'
 import { findPizzas, GetSearchParams } from '@/shared/lib/find-pizzas'
+import { getTranslations } from 'next-intl/server'
 
 export default async function Home({
   searchParams,
@@ -15,6 +16,7 @@ export default async function Home({
   searchParams: GetSearchParams
 }) {
   const categories = await findPizzas(searchParams)
+  const t = await getTranslations('HomePage')
 
   return (
     <>
@@ -26,7 +28,7 @@ export default async function Home({
       <Stories />
 
       <Container className="mt-10">
-        <Title text="Все пиццы" size="lg" className="font-extrabold" />
+        <Title text={t('All pizzas')} size="lg" className="font-extrabold" />
       </Container>
 
       <Container className="mt-10 pb-14">
