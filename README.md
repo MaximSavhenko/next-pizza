@@ -1,36 +1,66 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+## E-commerce Store
 
-First, run the development server:
+This is an e-commerce store built with the Next.js framework, Prisma, TypeScript, and other modern technologies. The project features a fully functional online store with support for responsiveness and multilingual support.
 
+## Tech Stack
+
+1.Next.js (Parallel Routes, Group Routes, Server Actions, API)
+2.TypeScript
+3.TailwindCSS + ShadCN
+4.Prisma + PostgreSQL
+5.NextAuth for authentication
+6.React Hook Form + Zod for form validation
+7.Zustand for state management
+8.react-hot-toast for notifications
+9.react-insta-stories for displaying stories
+10.lucide-react for icons
+11.Resend for sending emails
+12.Next Intl for multilingual support
+
+## Tech Stack
+
+1.Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/your-username/repository-name.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2.Navigate to the project directory:
+```bash
+cd repository-name
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3.Install dependencies:
+```bash
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4.Run the development server:
+```bash
+npm run dev
+```
 
-## Learn More
+Your project will be available at http://localhost:3000.
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Authentication and Registration: Users can create accounts and log in using NextAuth.
+Multilingual Support: Multiple language support with Next Intl.
+Responsive Design: The site is fully responsive, built using TailwindCSS. Components are styled with ShadCN.
+Cart and Order Management: Users can add products to the cart and complete orders.
+Notifications: Toast notifications are used to notify users about actions (e.g., adding a product to the cart).
+Stories: Interactive product stories are displayed using react-insta-stories.
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Key Components
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+API Routes: API routes in Next.js are used for server-side processing.
+Prisma: Prisma ORM is used for database interactions with PostgreSQL.
+Zustand: Zustand is used for managing state, such as cart items and user session.
+
+## Future Plans
+Implement additional pages for an admin panel.
+Add payment gateway support.
+Improve SEO.

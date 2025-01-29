@@ -25,6 +25,7 @@ export default async function Home({
           (category) => category.products.length > 0
         )}
       />
+      
       <Stories />
 
       <Container className="mt-10">
