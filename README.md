@@ -28,7 +28,7 @@ git clone https://github.com/your-username/repository-name.git
 
 2.Navigate to the project directory:
 ```bash
-cd repository-name
+cd next-pizza
 ```
 
 3.Install dependencies:
