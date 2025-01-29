@@ -7,12 +7,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { SearchInput } from './search-input'
 import { CartButton } from './cart-button'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 import toast from 'react-hot-toast'
 import { ProfileButton } from './profile-button'
 import { AuthModal } from './modals/auth-modal'
 import { LanguageButtons } from './language-buttons'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
+import { useRouter } from '@/i18n/routing'
 
 interface Props {
   hasSearch?: boolean
