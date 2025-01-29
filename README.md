@@ -6,18 +6,18 @@ This is an e-commerce store built with the Next.js framework, Prisma, TypeScript
 
 ## Tech Stack
 
-1.Next.js (Parallel Routes, Group Routes, Server Actions, API)
-2.TypeScript
-3.TailwindCSS + ShadCN
-4.Prisma + PostgreSQL
-5.NextAuth for authentication
-6.React Hook Form + Zod for form validation
-7.Zustand for state management
-8.react-hot-toast for notifications
-9.react-insta-stories for displaying stories
-10.lucide-react for icons
-11.Resend for sending emails
-12.Next Intl for multilingual support
+1. Next.js (Parallel Routes, Group Routes, Server Actions, API)
+2. TypeScript
+3. TailwindCSS + ShadCN
+4. Prisma + PostgreSQL
+5. NextAuth for authentication
+6. React Hook Form + Zod for form validation
+7. Zustand for state management
+8. react-hot-toast for notifications
+9. react-insta-stories for displaying stories
+10. lucide-react for icons
+11. Resend for sending emails
+12. Next Intl for multilingual support
 
 ## Tech Stack
 
