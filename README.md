@@ -23,7 +23,7 @@ This is an e-commerce store built with the Next.js framework, Prisma, TypeScript
 
 1.Clone the repository:
 ```bash
-git clone https://github.com/your-username/repository-name.git
+git clone https://github.com/MaximSavhenko/next-pizza.git
 ```
 
 2.Navigate to the project directory:
